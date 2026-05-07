@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import CheckoutPage from './views/CheckoutPage/CheckoutPage';
 import Layout from './components/Layout/LayoutComponents';
 import Landing from './views/Landing';
+import Cart from './views/Cart/Cart';
 
 
 
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Landing />} />
         <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
   )
