@@ -1,26 +1,24 @@
+import Footer from './components/Footer/Footer'
+import CheckoutPage from './views/CheckoutPage/CheckoutPage'
 import CardView from './components/CardView/CardView';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import data from './data/books.json';
+
+import {books} from './data/mocks';
 
 
 function App() {
+
   return (
-    <>
-      <h1>
-        Example main header
-      </h1>
-      
-      <Row xs={1} md={4} className="g-4">
-        {data.map((_, idx) => (
-          <Col key={idx}>
-            <CardView title={data[idx].Title} price={data[idx].Price} imgSrc={data[idx].Image} subtitle={data[idx].Author} />
-          </Col>
+    <>        
+      <div className='grid grid-cols-4 gap-4'>
+        {books.map((book, idx) => (
+          <div key={idx}>
+            <CardView title={book.title} price={book.price} imgSrc={book.coverImage} subtitle={book.author} />
+          </div>
         ))}
-      </Row>
-      <h1>
-        footer
-      </h1>
+      </div>      
+      <CheckoutPage />
+      {/* Footer de la aplicación */}
+      <Footer />
     </>
   )
 }

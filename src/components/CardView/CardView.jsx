@@ -1,19 +1,23 @@
-import { Card } from "react-bootstrap";
-import { Button }  from "react-bootstrap";
 import { TiShoppingCart } from "react-icons/ti";
 
 export default function CardView({ title, price, imgSrc, subtitle }) {
-  return (
-    <Card style={{ width: '16rem' }}>
-      <Card.Img  variant="top" src={imgSrc} style={{ height: '30vh'}} />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle style={{ fontWeight: 'normal', color: 'gray' }}>{subtitle}</Card.Subtitle>
-        <Card.Text style={{ fontWeight: 'bold' }}>${price.toFixed(2)}</Card.Text>
-        <div className="d-grid gap-1">
-        <Button className="d-flex align-items-center justify-content-center gap-2" variant="secondary" size="lg"><TiShoppingCart  /> Añadir al carrito</Button>
+    return (
+
+        <div className="w-64 rounded-xl bg-white p-4 shadow-md">
+            <div className="w-full h-80" >
+                <img src={imgSrc} alt={title} className="w-full h-full object-cover" />
+            </div>
+            <div className="CardContent p-5">
+                <h3>{title}</h3>
+
+                <p style={{ fontWeight: 'normal', color: 'gray' }}>{subtitle}</p>
+                <p style={{ fontWeight: 'bold' }}>${price.toFixed(2)}</p>
+                <div className="flex flex-col gap-1">
+                    <button className="mt-3 w-full rounded-lg bg-black py-2 text-white hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                        <TiShoppingCart /> Añadir al carrito
+                    </button>
+                </div>
+            </div>
         </div>
-      </Card.Body>
-    </Card>
-  );
+    );
 }
