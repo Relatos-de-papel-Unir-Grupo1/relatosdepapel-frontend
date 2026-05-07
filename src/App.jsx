@@ -1,15 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
-import Footer from './components/Footer/Footer'
-import CheckoutPage from './views/CheckoutPage/CheckoutPage'
+import CheckoutPage from './views/CheckoutPage/CheckoutPage';
+import Layout from './components/Layout/LayoutComponents';
+
+
 
 function App() {
-
   return (
-    <>
-      <CheckoutPage />
-      {/* Footer de la aplicación */}
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<CheckoutPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+      </Route>
+    </Routes>
   )
 }
 
