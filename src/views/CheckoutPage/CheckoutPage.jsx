@@ -8,7 +8,7 @@ import { GlobalContext } from '../../context/GlobalContext';
 
 // Este es el componente "padre" o "contenedor" de la página de checkout.
 // Su trabajo es manejar el estado y la lógica principal.
-export default function CheckoutPage() {
+export default function CheckoutPage({discount}) {
   // --- ESTADO ---
   // Usamos useState para guardar datos que pueden cambiar con el tiempo.
   const [paymentMethod, setPaymentMethod] = useState('card');
