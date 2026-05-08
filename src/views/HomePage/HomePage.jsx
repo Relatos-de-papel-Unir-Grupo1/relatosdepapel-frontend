@@ -6,12 +6,7 @@ import { useBooks } from "../../hooks/useBooks";
 export default function HomePage() {
   const { books, filters, setFilters, DEFAULT_FILTERS } = useBooks();
 
-  const handleClearFilters = () => setFilters(DEFAULT_FILTERS);
-
-  const handleAddToCart = (book) => {
-    // Hook para futura integración con carrito
-    console.log("Añadir al carrito:", book.title);
-  };
+  const handleClearFilters = () => setFilters(DEFAULT_FILTERS);  
 
   return (
     <div>
