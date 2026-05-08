@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import CheckoutPage from './views/CheckoutPage/CheckoutPage';
 import Layout from './components/Layout/LayoutComponents';
-import Landing from './views/Landing';
+import Landing from './views/Landing/Landing';
 import Cart from './views/Cart/Cart';
-import Login from './login.jsx'
+import Login from './views/Login/login'
 import ProfilePage from './views/ProfilePage/ProfilePage';
 import ProductDetailsPage from './views/ProductDetailsPage/ProductDetailsPage';
 import HomePage from './views/HomePage/HomePage';

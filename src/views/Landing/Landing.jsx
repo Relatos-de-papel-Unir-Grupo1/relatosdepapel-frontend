@@ -1,6 +1,6 @@
-import CardView from '../components/CardView/CardView';
+import CardView from '../../components/CardView/CardView';
 
-import { books } from '../data/mocks';
+import { books } from '../../data/mocks';
 
 export default function Landing() {
     return (<>
