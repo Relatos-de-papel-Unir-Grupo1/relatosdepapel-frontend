@@ -1,27 +1,25 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import PaymentSuccess from '../../components/CheckoutComponents/PaymentSuccess';
 import PaymentForms from '../../components/CheckoutComponents/PaymentForms';
 import ShippingInformation from '../../components/CheckoutComponents/ShippingInformation';
 import OrderSummary from '../../components/CheckoutComponents/OrderSummary';
 
+import { GlobalContext } from '../../context/GlobalContext';
+
 // Este es el componente "padre" o "contenedor" de la página de checkout.
 // Su trabajo es manejar el estado y la lógica principal.
-export default function CheckoutPage() {
+export default function CheckoutPage({discount}) {
   // --- ESTADO ---
   // Usamos useState para guardar datos que pueden cambiar con el tiempo.
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [cardName, setCardName] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // --- DATOS MOCK (DE PRUEBA) ---
-  // Por ahora, los datos del carrito están aquí. Más adelante, vendrán de otro lugar.
-  const cartItems = [
-    { id: 1, title: 'El Principito', price: 12.99, quantity: 2 },
-    { id: 2, title: 'Cien Años de Soledad', price: 18.50, quantity: 1 },
-  ];
+  const { cartItems } = useContext(GlobalContext);
+  
 
   // Calculamos el total basándonos en los items del carrito.
-  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0) - (discount || 0);
 
   // --- LÓGICA ---
   // Esta función se ejecutará cuando el usuario envíe el formulario.
