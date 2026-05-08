@@ -1,15 +1,18 @@
 import { TiShoppingCart } from "react-icons/ti";
 import { FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 
 export default function Cart() {
     const navigate = useNavigate();
+    const [discount, setDiscount] = useState(0);
+    const [coupon, setCoupon] = useState("");
     const { cartItems, decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } = useContext(GlobalContext);
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    //apply cuppon discunt here if there is any
     const taxes = subtotal * 0.16;
-    const total = subtotal + taxes;
+    const total = subtotal + taxes - discount;
     return (<>
         <div className="min-h-screen bg-gray-100 p-8">
             <div className="mb-6">
@@ -88,8 +91,13 @@ export default function Cart() {
                         <label className="block mb-2 text-sm font-medium">Código de Cupón</label>
 
                         <div className="flex">
-                            <input type="text" placeholder="Ej: DESCUENTO10" className="flex-1 border rounded-l-lg px-4 py-2 outline-none focus:ring-2 focus:ring-black" />
-                            <button className="bg-slate-900 text-white px-4 rounded-r-lg hover:bg-slate-800">Aplicar</button>
+                            <input type="text" placeholder="Ej: DESCUENTO10" className="flex-1 border rounded-l-lg px-4 py-2 outline-none focus:ring-2 focus:ring-black"
+                             value={coupon} onChange={(e) => setCoupon(e.target.value)} />
+                            <button className="bg-slate-900 text-white px-4 rounded-r-lg hover:bg-slate-800" onClick={() => {                                
+                                if (coupon === "DESCUENTO10" && discount === 0 && subtotal > 0) {
+                                    setDiscount(subtotal * 0.1); 
+                                }
+                            }}>Aplicar</button>
                         </div>
                     </div>
 
@@ -102,6 +110,11 @@ export default function Cart() {
                         <div className="flex justify-between text-gray-600">
                             <span>Impuestos (16%)</span>
                             <span>${taxes.toFixed(2)}</span>
+                        </div>
+
+                        <div className="flex justify-between text-gray-600">
+                            <span>Descuento</span>
+                            <span>${discount.toFixed(2)}</span>
                         </div>
 
                         <div className="flex justify-between text-2xl font-bold border-t pt-4">
