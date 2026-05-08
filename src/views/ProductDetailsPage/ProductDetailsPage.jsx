@@ -1,13 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { books } from "../../data/mocks";
 import ProductGallery from "../../components/ProductDetails/ProductGallery";
 import ProductInfo from "../../components/ProductDetails/ProductInfo";
 import ProductVariants from "../../components/ProductDetails/ProductVariants";
 import ProductReviews from "../../components/ProductDetails/ProductReviews";
+import { GlobalContext } from "../../context/GlobalContext";
+import { useContext } from "react";
 
 export default function ProductDetailsPage({ book }) {
   const { id } = useParams();
-
+  const { addToCart } = useContext(GlobalContext);
+  const navigate = useNavigate();
   // Prioridad: prop > param de la URL > primer libro del mock
   const currentBook =
     book ||
@@ -25,8 +28,11 @@ export default function ProductDetailsPage({ book }) {
     );
   }
 
-  const handleAddToCart = (b) => console.log("Añadir al carrito:", b.title);
-  const handleBuyNow = (b) => console.log("Comprar ahora:", b.title);
+  const handleAddToCart = (b) => addToCart({ id: b.id, title: b.title, price: b.price, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
+  const handleBuyNow = (b) => {
+    addToCart({ id: b.id, title: b.title, price: b.price, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
+    navigate("/cart");
+  };
   const handleAddToWishlist = () =>
     console.log("Agregado a lista de deseos:", currentBook.title);
   const handleNotify = () =>
@@ -44,7 +50,7 @@ export default function ProductDetailsPage({ book }) {
             onAddToCart={handleAddToCart}
             onBuyNow={handleBuyNow}
             onAddToWishlist={handleAddToWishlist}
-          />
+          />          
           <ProductVariants onNotify={handleNotify} />
         </div>
       </div>
