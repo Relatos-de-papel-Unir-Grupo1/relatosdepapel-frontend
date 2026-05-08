@@ -15,11 +15,13 @@ export default function CheckoutPage({discount}) {
   const [cardName, setCardName] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const { cartItems } = useContext(GlobalContext);
+  const { cartItems, discount } = useContext(GlobalContext);
   
-
+  
   // Calculamos el total basándonos en los items del carrito.
-  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0) - (discount || 0);
+  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const taxes = subtotal * 0.16;
+  const total = subtotal + taxes - (discount || 0);
 
   // --- LÓGICA ---
   // Esta función se ejecutará cuando el usuario envíe el formulario.

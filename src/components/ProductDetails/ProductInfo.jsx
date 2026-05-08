@@ -1,13 +1,8 @@
-export default function ProductInfo({ book, onAddToCart, onBuyNow, onAddToWishlist }) {
+export default function ProductInfo({ book, onAddToCart, onBuyNow }) {
   return (
     <div>
       {/* Categoría */}
       <p>Literatura universal</p>
-
-      {/* Wishlist */}
-      <button type="button" onClick={onAddToWishlist}>
-        Agregar a lista de deseos ♡
-      </button>
 
       {/* Título y autor */}
       <h1>{book.title}</h1>
