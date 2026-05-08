@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalContext';
 import { BookProvider } from "./context/BookContext";
 import Cart from './views/Cart/Cart';
 import Login from './views/Login/login'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 
 function App() {
@@ -17,12 +18,16 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="profile" element={<ProfilePage />} />
         <Route path="home" element={<HomePage />} />
         <Route path="product/:id" element={<ProductDetailsPage />} />
         <Route path="login" element={<Login />} />
+
+        {/* Rutas protegidas: requieren usuario autenticado */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
       </Route>
     </Routes>  
     </BookProvider>

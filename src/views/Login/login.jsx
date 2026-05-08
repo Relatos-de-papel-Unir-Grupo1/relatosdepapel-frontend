@@ -1,4 +1,28 @@
+import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
+
 function Login() {
+    const { setUser } = useContext(GlobalContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const from = location.state?.from?.pathname || "/";
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!email || !password) {
+            setError("Por favor ingresa correo y contraseña.");
+            return;
+        }
+        setError("");
+        setUser({ email });
+        navigate(from, { replace: true });
+    };
+
     return (
         <div className="flex min-h-screen flex-col lg:flex-row">
             <section
@@ -35,7 +59,7 @@ function Login() {
                         </button>
                     </div>
 
-                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
                             <label className="mb-1 block text-sm font-medium text-[var(--color-ink)]">
                                 Correo electrónico
@@ -44,6 +68,8 @@ function Login() {
                                 type="email"
                                 placeholder="ejemplo@correo.com"
                                 className="input-field"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
@@ -55,7 +81,12 @@ function Login() {
                                 type="password"
                                 placeholder="********"
                                 className="input-field"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
+                            {error && (
+                                <p className="mt-2 text-xs text-red-600">{error}</p>
+                            )}
                             <div className="mt-2 text-right">
                 <span className="cursor-pointer text-xs text-[var(--color-ink-muted)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline">
                   ¿Olvidaste tu contraseña?
