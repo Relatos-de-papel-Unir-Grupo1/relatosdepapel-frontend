@@ -1,19 +1,12 @@
 import { TiShoppingCart } from "react-icons/ti";
 import { FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 export default function Cart() {
     const navigate = useNavigate();
-    const cartItems = [
-        {
-            id: 1,
-            title: "El Padrino",
-            author: "Mario Puzo",
-            price: 19.99,
-            quantity: 1,
-            image: "/covers/2456184-1200-auto.gif"
-        }
-    ];
+    const { cartItems, decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } = useContext(GlobalContext);
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const taxes = subtotal * 0.16;
     const total = subtotal + taxes;
@@ -66,16 +59,22 @@ export default function Cart() {
 
                             <div className="flex items-center gap-2">
 
-                                <button className="h-8 w-8 rounded border hover:bg-gray-100">-</button>
+                                <button className="h-8 w-8 rounded border hover:bg-gray-100" onClick={() => {
+                                    decreaseCartItemQuantity(item.id);
+                                }}>-</button>
                                 <span>{item.quantity}</span>
-                                <button className="h-8 w-8 rounded border hover:bg-gray-100">+</button>
+                                <button className="h-8 w-8 rounded border hover:bg-gray-100" onClick={() => {                                    
+                                    increaseCartItemQuantity(item.id);
+                                }}>+</button>
                             </div>
 
                             <div className="flex items-center justify-between">
                                 <p className="font-bold">
                                     ${(item.price * item.quantity).toFixed(2)}
                                 </p>
-                                <button className="text-red-500 hover:text-red-700"><FiTrash2 /></button>
+                                <button className="text-red-500 hover:text-red-700" onClick={() => removeFromCart(item.id)}>
+                                    <FiTrash2 />
+                                </button>
                             </div>
                         </div>
                     ))}

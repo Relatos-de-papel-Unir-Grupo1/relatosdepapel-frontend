@@ -1,19 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItem";
 
+import { GlobalContext } from "../../context/GlobalContext";
+
 export default function CartPreview({ setOpenCart }) {
     const navigate = useNavigate();
-    const cartItems = [
-        {
-            id: 1,
-            title: "El Padrino",
-            author: "Mario Puzo",
-            price: 19.99,
-            quantity: 1,
-            image: "/covers/2456184-1200-auto.gif"
-        }
-    ];
+    const { cartItems } = useContext(GlobalContext);
     const cartRef = useRef(null);
 
     useEffect(() => {

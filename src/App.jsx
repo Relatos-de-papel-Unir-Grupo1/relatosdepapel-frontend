@@ -6,10 +6,12 @@ import Cart from './views/Cart/Cart';
 import ProfilePage from './views/ProfilePage/ProfilePage';
 import ProductDetailsPage from './views/ProductDetailsPage/ProductDetailsPage';
 import HomePage from './views/HomePage/HomePage';
+import { GlobalProvider } from './context/GlobalContext';
 
 
 function App() {
   return (
+    <GlobalProvider>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Landing />} />
@@ -20,6 +22,7 @@ function App() {
         <Route path="product/:id" element={<ProductDetailsPage />} />
       </Route>
     </Routes>  
+    </GlobalProvider>
   )
 }
 
