@@ -47,7 +47,7 @@ export const books = [
     author: 'Mario Mendoza',
     price: 15.99,
     description: 'Novela urbana sobre la marginalidad, la violencia y la juventud en Bogotá.',
-    coverImage: './covers/2436196-300-300.webp',
+    coverImage: '/covers/2436196-300-300.webp',
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ export const books = [
     author: 'Mario Puzo',
     price: 19.99,
     description: 'Clásica novela sobre la mafia italiana y la familia Corleone.',
-    coverImage: './covers/2456184-1200-auto.gif',
+    coverImage: '/covers/2456184-1200-auto.gif',
   },
   {
     id: 3,
@@ -63,7 +63,7 @@ export const books = [
     author: 'Carolina Sanín',
     price: 24.99,
     description: 'Obra literaria contemporánea con reflexiones sociales y culturales.',
-    coverImage: './covers/2473261-300-300.webp',
+    coverImage: '/covers/2473261-300-300.webp',
   },
   {
     id: 4,
@@ -71,7 +71,7 @@ export const books = [
     author: 'Serena Valentino',
     price: 12.99,
     description: 'Historia inspirada en los villanos clásicos de los cuentos de hadas.',
-    coverImage: './covers/2473623-300-300.gif',
+    coverImage: '/covers/2473623-300-300.gif',
   },
   {
     id: 5,
@@ -79,7 +79,7 @@ export const books = [
     author: 'Javier Cercas',
     price: 14.99,
     description: 'Novela histórica ambientada en la Guerra Civil Española.',
-    coverImage: './covers/2473837-300-300.gif',
+    coverImage: '/covers/2473837-300-300.gif',
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ export const books = [
     author: 'Isabel Allende',
     price: 18.99,
     description: 'Saga familiar llena de realismo mágico y acontecimientos políticos.',
-    coverImage: './covers/2477613-300-300.gif',
+    coverImage: '/covers/2477613-300-300.gif',
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ export const books = [
     author: 'Yolanda Reyes',
     price: 9.99,
     description: 'Libro juvenil sobre aventuras escolares y misterios.',
-    coverImage: './covers/2478029-300-300.gif',
+    coverImage: '/covers/2478029-300-300.gif',
   },
   {
     id: 8,
@@ -103,7 +103,7 @@ export const books = [
     author: 'Monica Acebedo',
     price: 12.99,
     description: 'Historia de misterio y aventuras alrededor de un antiguo amuleto.',
-    coverImage: './covers/2479316-300-300.webp',
+    coverImage: '/covers/2479316-300-300.webp',
   },
   {
     id: 9,
@@ -111,7 +111,7 @@ export const books = [
     author: 'Maria Fernanda Heredia',
     price: 11.99,
     description: 'Novela juvenil sobre el amor, la amistad y la adolescencia.',
-    coverImage: './covers/2485136-300-300.webp',
+    coverImage: '/covers/2485136-300-300.webp',
   },
   {
     id: 10,
@@ -119,7 +119,7 @@ export const books = [
     author: 'John Williams',
     price: 14.99,
     description: 'Novela introspectiva sobre la vida académica y las decisiones personales.',
-    coverImage: './covers/2492625-300-300.gif',
+    coverImage: '/covers/2492625-300-300.gif',
   },
   {
     id: 11,
@@ -127,7 +127,7 @@ export const books = [
     author: 'Varios autores',
     price: 19.99,
     description: 'Colección de textos y reflexiones sobre la realidad colombiana.',
-    coverImage: './covers/40709637-500-auto.webp',
+    coverImage: '/covers/40709637-500-auto.webp',
   },
   {
     id: 12,
@@ -135,7 +135,7 @@ export const books = [
     author: 'Isabel Allende',
     price: 17.99,
     description: 'Libro con reflexiones y relatos cargados de imaginación y simbolismo.',
-    coverImage: './covers/40718253-500-auto.webp',
+    coverImage: '/covers/40718253-500-auto.webp',
   },
   // Concatenamos los libros generados aleatoriamente, asegurando que los IDs no se repitan.
   ...generatedBooks.map(book => ({ ...book, id: book.id + 3 })).slice(0, 97)
