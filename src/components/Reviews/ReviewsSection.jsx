@@ -27,21 +27,20 @@ const StarRating = ({ rating, max = 5 }) => (
   </div>
 );
 const ReviewCard = ({ author, rating, text }) => (
-  <div className="border-b border-dashed border-gray-200 pb-4 last:border-0">
+  <div className="rounded-[22px] border border-[rgba(22,49,58,0.08)] bg-white/70 p-4">
     <StarRating rating={rating} />
-    <p className="mt-1 text-sm font-semibold text-slate-700">{author}</p>
-    <p className="mt-1 text-sm text-slate-500">
+    <p className="mt-2 text-sm font-semibold text-[var(--color-ink)]">{author}</p>
+    <p className="mt-1 text-sm text-[var(--color-ink-muted)]">
       [<span className="font-normal">{text}</span>]
     </p>
   </div>
 );
 const ReviewsSection = ({ averageRating = 4.5, totalReviews = 128 }) => {
   return (
-    <div className="w-full max-w-md">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-dashed border-gray-200 pb-3">
-        <h2 className="text-lg font-bold text-slate-800">Reseñas</h2>
-        <span className="text-sm text-slate-400">
+    <div className="surface-panel w-full max-w-md p-5">
+      <div className="flex items-center justify-between border-b border-dashed border-[rgba(22,49,58,0.14)] pb-3">
+        <h2 className="font-serif text-3xl font-semibold text-[var(--color-ink)]">Reseñas</h2>
+        <span className="text-sm text-[var(--color-ink-muted)]">
           {averageRating} / 5 ({totalReviews} reseñas)
         </span>
       </div>
@@ -50,7 +49,7 @@ const ReviewsSection = ({ averageRating = 4.5, totalReviews = 128 }) => {
           <ReviewCard key={review.id} {...review} />
         ))}
       </div>
-      <button className="mt-5 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-gray-50">
+      <button className="btn-secondary mt-5">
         Ver todas las reseñas
       </button>
     </div>
