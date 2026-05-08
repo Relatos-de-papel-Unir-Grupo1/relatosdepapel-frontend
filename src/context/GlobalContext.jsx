@@ -6,6 +6,7 @@ export function GlobalProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
     const [wishlistItems, setWishlistItems] = useState([]);
     const [user, setUser] = useState(null);
+    const [discount, setDiscount] = useState(0);
 
     const addToCart = (item) => {
         const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
@@ -33,7 +34,7 @@ export function GlobalProvider({ children }) {
     };
 
     return (
-        <GlobalContext.Provider value={{ cartItems, addToCart, wishlistItems, addToWishlist, user, setUser, increaseCartItemQuantity, decreaseCartItemQuantity, removeFromCart }}>
+        <GlobalContext.Provider value={{ cartItems, addToCart, wishlistItems, addToWishlist, user, setUser, increaseCartItemQuantity, decreaseCartItemQuantity, removeFromCart, setDiscount, discount }}>
             {children}
         </GlobalContext.Provider>
     );

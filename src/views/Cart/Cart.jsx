@@ -6,9 +6,8 @@ import { GlobalContext } from "../../context/GlobalContext";
 
 export default function Cart() {
     const navigate = useNavigate();
-    const [discount, setDiscount] = useState(0);
     const [coupon, setCoupon] = useState("");
-    const { cartItems, decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } = useContext(GlobalContext);
+    const { cartItems, decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart, setDiscount, discount } = useContext(GlobalContext);
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const taxes = subtotal * 0.16;
     const total = subtotal + taxes - discount;

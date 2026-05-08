@@ -5,7 +5,7 @@ export default function BookGrid({ books }) {
     <div className='grid grid-cols-4 gap-4'>
       {books.map((book, idx) => (
         <div key={idx}>
-          <CardView id={idx} title={book.title} price={book.price} imgSrc={book.coverImage} subtitle={book.author} />
+          <CardView id={book.id} title={book.title} price={book.price} imgSrc={book.coverImage} subtitle={book.author} />
         </div>
       ))}
     </div>
