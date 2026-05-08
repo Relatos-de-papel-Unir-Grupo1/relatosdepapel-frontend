@@ -10,7 +10,6 @@ export default function Cart() {
     const [coupon, setCoupon] = useState("");
     const { cartItems, decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } = useContext(GlobalContext);
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    //apply cuppon discunt here if there is any
     const taxes = subtotal * 0.16;
     const total = subtotal + taxes - discount;
     return (<>
