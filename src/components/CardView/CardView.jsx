@@ -6,7 +6,6 @@ export default function CardView({ id, title, price, imgSrc, subtitle }) {
     const { addToCart } = useContext(GlobalContext);
 
     return (
-
         <div className="w-64 rounded-xl bg-white p-4 shadow-md">
             <div className="w-full h-80" >
                 <img src={imgSrc} alt={title} className="w-full h-full object-cover" />

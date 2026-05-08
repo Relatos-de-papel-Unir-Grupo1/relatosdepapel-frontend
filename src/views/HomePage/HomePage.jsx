@@ -54,12 +54,7 @@ export default function HomePage() {
     return sortByPopularity(result, filters.popularity);
   }, [filters]);
 
-  const handleClearFilters = () => setFilters(DEFAULT_FILTERS);
-
-  const handleAddToCart = (book) => {
-    // Hook para futura integración con carrito
-    console.log("Añadir al carrito:", book.title);
-  };
+  const handleClearFilters = () => setFilters(DEFAULT_FILTERS);  
 
   return (
     <div>
@@ -73,7 +68,7 @@ export default function HomePage() {
           {visibleBooks.length === 0 ? (
             <EmptyState onClearFilters={handleClearFilters} />
           ) : (
-            <BookGrid books={visibleBooks} onAddToCart={handleAddToCart} />
+            <BookGrid books={visibleBooks} />
           )}
         </div>
       </div>
