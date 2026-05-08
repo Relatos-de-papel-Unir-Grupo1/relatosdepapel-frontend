@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../footer/Footer";
+import HomePage from "../../views/HomePage/HomePage";
 
 
 export default function Layout() {
@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="app-container">
       <Header />
       <main className="app-content">
-        <Outlet /> 
+        <HomePage />
       </main>
       <Footer />
     </div>
