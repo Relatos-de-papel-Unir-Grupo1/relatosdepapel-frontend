@@ -16,8 +16,11 @@ export default function ProductDetailsPage({ book }) {
 
   if (!currentBook) {
     return (
-      <div>
-        <p>Libro no encontrado.</p>
+      <div className="page-shell page-section">
+        <div className="surface-panel px-6 py-10 sm:px-8">
+          <p className="eyebrow-chip">Catálogo</p>
+          <p className="mt-4 text-lg">Libro no encontrado.</p>
+        </div>
       </div>
     );
   }
@@ -30,11 +33,12 @@ export default function ProductDetailsPage({ book }) {
     console.log("Avísame cuando haya stock:", currentBook.title);
 
   return (
-    <div>
-      <div>
+    <div className="page-shell page-section space-y-8">
+      <section className="surface-panel overflow-hidden px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)] lg:items-start">
         <ProductGallery book={currentBook} />
 
-        <div>
+        <div className="space-y-6">
           <ProductInfo
             book={currentBook}
             onAddToCart={handleAddToCart}
@@ -44,6 +48,7 @@ export default function ProductDetailsPage({ book }) {
           <ProductVariants onNotify={handleNotify} />
         </div>
       </div>
+      </section>
 
       <ProductReviews />
     </div>

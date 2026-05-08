@@ -41,11 +41,12 @@ export default function CartPreview({ setOpenCart }) {
     );
 
     return (
-        <div ref={cartRef} className="absolute right-0 mt-4 w-96 rounded-2xl border bg-white p-4 shadow-2xl z-50">
-            <button onClick={() => setOpenCart(false)} className="absolute right-4 top-4 text-gray-500 hover:text-black">✕</button>
-            <h2 className="mb-4 text-xl font-bold">Mi carrito</h2>
+        <div ref={cartRef} className="surface-panel absolute right-0 top-full z-50 mt-4 w-[min(24rem,calc(100vw-2rem))] overflow-hidden p-5">
+            <button onClick={() => setOpenCart(false)} className="absolute right-4 top-4 text-[var(--color-ink-muted)] transition hover:text-[var(--color-ink)]">✕</button>
+            <p className="section-kicker">Compra en curso</p>
+            <h2 className="mt-2 font-serif text-3xl font-semibold">Mi carrito</h2>
             
-            <div className="space-y-4">
+            <div className="mt-5 max-h-[min(50vh,18rem)] space-y-4 overflow-y-auto pr-1">
                 {cartItems.map((item) => (
                     <CartItem
                         key={item.id}
@@ -54,8 +55,8 @@ export default function CartPreview({ setOpenCart }) {
                 ))}
             </div>
 
-            <div className="mt-6 border-t pt-4">
-                <div className="mb-4 flex justify-between font-bold">
+            <div className="mt-6 border-t border-[rgba(22,49,58,0.1)] pt-4">
+                <div className="mb-4 flex justify-between text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-ink)]">
                     <span>Subtotal</span>
                     <span>
                         ${subtotal.toFixed(2)}
@@ -66,7 +67,7 @@ export default function CartPreview({ setOpenCart }) {
                             setOpenCart(false);
                             navigate("/cart");
                         }
-                    }} className="w-full rounded-xl bg-black py-3 text-white hover:bg-gray-800 transition">Ver carrito</button>
+                    }} className="btn-primary w-full">Ver carrito</button>
             </div>
         </div>
     );

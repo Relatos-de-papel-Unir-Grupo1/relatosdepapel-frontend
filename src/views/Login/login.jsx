@@ -2,57 +2,62 @@ function Login() {
     return (
         <div className="flex min-h-screen flex-col lg:flex-row">
             <section
-                className="hidden lg:block lg:w-3/5 bg-cover bg-center"
+                className="relative hidden lg:block lg:w-3/5 bg-cover bg-center"
                 style={{
                     backgroundImage:
                         "url('https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1400&auto=format&fit=crop')"
                 }}
             >
-                <div className="h-full w-full bg-black/10"></div>
+                <div className="h-full w-full bg-[linear-gradient(180deg,rgba(22,49,58,0.12),rgba(22,49,58,0.5))]"></div>
+                <div className="absolute bottom-10 left-10 max-w-lg rounded-[28px] border border-white/20 bg-white/10 p-8 text-white backdrop-blur-md">
+                    <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/80">Acceso editorial</p>
+                    <h2 className="mt-3 font-serif text-5xl font-semibold leading-none">Una entrada cálida a tu biblioteca.</h2>
+                    <p className="mt-4 text-sm leading-7 text-white/80">El acceso conserva el mismo lenguaje visual del catálogo: capas suaves, serif expresiva y acentos turquesa para las acciones clave.</p>
+                </div>
             </section>
-            <section className="flex flex-1 items-center justify-center bg-gray-50 p-6 sm:p-12">
-                <div className="w-full max-w-md">
+            <section className="flex flex-1 items-center justify-center p-6 sm:p-12">
+                <div className="surface-panel w-full max-w-md p-6 sm:p-8">
 
                     <header className="mb-10 text-center">
-                        <h1 className="mb-2 text-4xl font-serif font-bold text-gray-900">
+                        <p className="section-kicker">Cuenta</p>
+                        <h1 className="mb-2 mt-3 text-5xl font-serif font-semibold text-[var(--color-ink)]">
                             Relatos de Papel
                         </h1>
-                        <p className="text-gray-500">Inicia sesión en tu biblioteca digital</p>
+                        <p className="text-[var(--color-ink-muted)]">Inicia sesión en tu biblioteca digital</p>
                     </header>
 
-                    {/* Tabs simples */}
-                    <div className="mb-8 flex border-b border-gray-200 text-sm font-medium">
-                        <button className="border-b-2 border-black pb-3 pr-4 font-bold">
+                    <div className="mb-8 flex border-b border-[rgba(22,49,58,0.1)] text-sm font-medium">
+                        <button className="border-b-2 border-[var(--color-primary)] pb-3 pr-4 font-bold text-[var(--color-ink)]">
                             Iniciar sesión
                         </button>
-                        <button className="pb-3 pl-4 text-gray-400 hover:text-black transition">
+                        <button className="pb-3 pl-4 text-[var(--color-ink-muted)] transition hover:text-[var(--color-ink)]">
                             Crear cuenta
                         </button>
                     </div>
 
                     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                         <div>
-                            <label className="mb-1 block text-sm font-medium text-gray-700">
+                            <label className="mb-1 block text-sm font-medium text-[var(--color-ink)]">
                                 Correo electrónico
                             </label>
                             <input
                                 type="email"
                                 placeholder="ejemplo@correo.com"
-                                className="w-full border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-black/5 focus:border-black transition"
+                                className="input-field"
                             />
                         </div>
 
                         <div>
-                            <label className="mb-1 block text-sm font-medium text-gray-700">
+                            <label className="mb-1 block text-sm font-medium text-[var(--color-ink)]">
                                 Contraseña
                             </label>
                             <input
                                 type="password"
                                 placeholder="********"
-                                className="w-full border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-black/5 focus:border-black transition"
+                                className="input-field"
                             />
                             <div className="mt-2 text-right">
-                <span className="cursor-pointer text-xs text-gray-400 hover:text-black underline-offset-4 hover:underline">
+                <span className="cursor-pointer text-xs text-[var(--color-ink-muted)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline">
                   ¿Olvidaste tu contraseña?
                 </span>
                             </div>
@@ -62,32 +67,31 @@ function Login() {
                             <input
                                 type="checkbox"
                                 id="remember"
-                                className="h-4 w-4 accent-black"
+                                className="h-4 w-4 accent-[var(--color-primary)]"
                             />
-                            <label htmlFor="remember" className="text-sm text-gray-600 select-none">
+                            <label htmlFor="remember" className="select-none text-sm text-[var(--color-ink-muted)]">
                                 Mantener sesión iniciada
                             </label>
                         </div>
 
-                        <button className="w-full bg-black p-3 text-white font-semibold hover:bg-gray-800 transition-colors shadow-lg active:scale-[0.98]">
+                        <button className="btn-primary w-full active:scale-[0.98]">
                             Entrar
                         </button>
                     </form>
 
-                    {/* Divisor con texto */}
                     <div className="relative my-8 text-center">
-                        <hr className="border-gray-200" />
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-50 px-2 text-xs uppercase text-gray-400">
+                        <hr className="border-[rgba(22,49,58,0.1)]" />
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--color-paper)] px-2 text-xs uppercase text-[var(--color-ink-muted)]">
               o continuar con
             </span>
                     </div>
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <button className="flex items-center justify-center gap-2 border border-gray-300 p-3 text-sm hover:bg-white hover:shadow-sm transition">
+                        <button className="flex items-center justify-center gap-2 rounded-2xl border border-[rgba(22,49,58,0.08)] bg-white/70 p-3 text-sm transition hover:bg-white hover:shadow-sm">
                             <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google" className="h-4 w-4" />
                             Google
                         </button>
-                        <button className="flex items-center justify-center gap-2 border border-gray-300 p-3 text-sm hover:bg-white hover:shadow-sm transition">
+                        <button className="flex items-center justify-center gap-2 rounded-2xl border border-[rgba(22,49,58,0.08)] bg-white/70 p-3 text-sm transition hover:bg-white hover:shadow-sm">
                             <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB" className="h-4 w-4" />
                             Facebook
                         </button>

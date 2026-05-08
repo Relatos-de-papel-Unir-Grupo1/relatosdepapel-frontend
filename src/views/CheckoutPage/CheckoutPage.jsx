@@ -8,7 +8,7 @@ import { GlobalContext } from '../../context/GlobalContext';
 
 // Este es el componente "padre" o "contenedor" de la página de checkout.
 // Su trabajo es manejar el estado y la lógica principal.
-export default function CheckoutPage({discount}) {
+export default function CheckoutPage() {
   // --- ESTADO ---
   // Usamos useState para guardar datos que pueden cambiar con el tiempo.
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -42,33 +42,39 @@ export default function CheckoutPage({discount}) {
 
   // Si no, mostramos el formulario de pago.
   return (
-    <div>
-      <header>
-        <h1>Relatos de Papel - Checkout</h1>
-      </header>
+    <div className="page-shell page-section space-y-8">
+      <section className="surface-panel px-6 py-8 sm:px-8 lg:px-10">
+        <p className="section-kicker">Checkout</p>
+        <h1 className="mt-3 font-serif text-5xl font-semibold leading-none sm:text-6xl">Cierre de compra claro y sereno.</h1>
+        <p className="section-copy">
+          La composición separa datos, pago y resumen para reducir carga visual en el momento más sensible del flujo.
+        </p>
+      </section>
 
       <main>
         <form onSubmit={handlePayment}>
-          <div>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_360px]">
             {/* 
               Aquí pasamos el estado y las funciones para cambiarlo como "props"
               a los componentes hijos.
             */}
-            <PaymentForms
-              paymentMethod={paymentMethod}
-              setPaymentMethod={setPaymentMethod}
-              cardName={cardName}
-              setCardName={setCardName}
-            />
+            <div className="space-y-6">
+              <PaymentForms
+                paymentMethod={paymentMethod}
+                setPaymentMethod={setPaymentMethod}
+                cardName={cardName}
+                setCardName={setCardName}
+              />
 
-            <ShippingInformation />
-          </div>
+              <ShippingInformation />
+            </div>
 
-          <div>
-            <OrderSummary 
-              cartItems={cartItems}
-              total={total}
-            />
+            <div>
+              <OrderSummary 
+                cartItems={cartItems}
+                total={total}
+              />
+            </div>
           </div>
         </form>
       </main>

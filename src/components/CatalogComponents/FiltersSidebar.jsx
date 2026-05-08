@@ -36,51 +36,56 @@ export default function FiltersSidebar({ filters, onChange }) {
   };
 
   return (
-    <aside>
-      <h2>Filtros</h2>
+    <aside className="surface-panel h-fit p-6 sm:p-7">
+      <p className="section-kicker">Exploración</p>
+      <h2 className="mt-2 font-serif text-3xl font-semibold">Filtros</h2>
+      <p className="mt-3 text-sm leading-6 text-[var(--color-ink-muted)]">
+        Acota por precio, formato, orden y fecha para navegar el catálogo con menos ruido visual.
+      </p>
 
-      {/* Precio */}
-      <div>
-        <h3>Precio</h3>
-        <div>
+      <div className="mt-8 space-y-7">
+        <div className="space-y-4">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.24em] text-[var(--color-primary-deep)]">Precio</h3>
+          <div className="space-y-2">
           {PRICE_OPTIONS.map((opt) => (
-            <label key={opt.value}>
+            <label key={opt.value} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-[rgba(22,49,58,0.08)] bg-white/80 px-4 py-3 text-sm font-medium text-[var(--color-ink)] transition hover:border-[rgba(0,194,159,0.3)] hover:bg-[var(--color-primary-soft)]/40">
               <input
                 type="radio"
                 name="price"
                 value={opt.value}
                 checked={filters.price === opt.value}
                 onChange={() => handle("price", opt.value)}
+                className="h-4 w-4 accent-[var(--color-primary)]"
               />
               {opt.label}
             </label>
           ))}
+          </div>
         </div>
-      </div>
 
-      {/* Formato */}
-      <div>
-        <h3>Formato</h3>
-        <div>
+        <div className="space-y-4">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.24em] text-[var(--color-primary-deep)]">Formato</h3>
+          <div className="space-y-2">
           {FORMAT_OPTIONS.map((opt) => (
-            <label key={opt.value}>
+            <label key={opt.value} className="flex cursor-pointer items-center gap-3 rounded-2xl border border-[rgba(22,49,58,0.08)] bg-white/80 px-4 py-3 text-sm font-medium text-[var(--color-ink)] transition hover:border-[rgba(0,194,159,0.3)] hover:bg-[var(--color-primary-soft)]/40">
               <input
                 type="checkbox"
                 checked={(filters.formats || []).includes(opt.value)}
                 onChange={() => toggleFormat(opt.value)}
+                className="h-4 w-4 rounded accent-[var(--color-primary)]"
               />
               {opt.label}
             </label>
           ))}
+          </div>
         </div>
-      </div>
 
-      {/* Popularidad */}
-      <div>
-        <h3>Popularidad</h3>
+        <div className="space-y-4">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.24em] text-[var(--color-primary-deep)]">Popularidad</h3>
         <select
           value={filters.popularity}
           onChange={(e) => handle("popularity", e.target.value)}
+          className="select-field"
         >
           {POPULARITY_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -88,14 +93,14 @@ export default function FiltersSidebar({ filters, onChange }) {
             </option>
           ))}
         </select>
-      </div>
+        </div>
 
-      {/* Fecha de publicación */}
-      <div>
-        <h3>Fecha de publicación</h3>
+        <div className="space-y-4">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.24em] text-[var(--color-primary-deep)]">Fecha de publicación</h3>
         <select
           value={filters.date}
           onChange={(e) => handle("date", e.target.value)}
+          className="select-field"
         >
           {DATE_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -103,6 +108,7 @@ export default function FiltersSidebar({ filters, onChange }) {
             </option>
           ))}
         </select>
+        </div>
       </div>
     </aside>
   );
