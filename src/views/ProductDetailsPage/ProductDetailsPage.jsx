@@ -3,6 +3,7 @@ import { books } from "../../data/mocks";
 import ProductGallery from "../../components/ProductDetails/ProductGallery";
 import ProductInfo from "../../components/ProductDetails/ProductInfo";
 import ProductVariants from "../../components/ProductDetails/ProductVariants";
+import ProductReviews from "../../components/ProductDetails/ProductReviews";
 
 export default function ProductDetailsPage({ book }) {
   const { id } = useParams();
@@ -43,6 +44,8 @@ export default function ProductDetailsPage({ book }) {
           <ProductVariants onNotify={handleNotify} />
         </div>
       </div>
+
+      <ProductReviews />
     </div>
   );
 }
