@@ -3,7 +3,9 @@ import CheckoutPage from './views/CheckoutPage/CheckoutPage';
 import Layout from './components/Layout/LayoutComponents';
 import Landing from './views/Landing';
 import Cart from './views/Cart/Cart';
-
+import ProfilePage from './views/ProfilePage/ProfilePage';
+import ProductDetailsPage from './views/ProductDetailsPage/ProductDetailsPage';
+import HomePage from './views/HomePage/HomePage';
 
 
 function App() {
@@ -13,8 +15,11 @@ function App() {
         <Route index element={<Landing />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="product/:id" element={<ProductDetailsPage />} />
       </Route>
-    </Routes>
+    </Routes>  
   )
 }
 

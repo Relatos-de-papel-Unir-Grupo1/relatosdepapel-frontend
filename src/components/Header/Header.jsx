@@ -19,17 +19,20 @@ export default function Header() {
  
 
   return (
-    <header >
-      <div >
+    <header>
+      <div>
+        {/* Logo */}
         <Link to="/">Relatos de Papel</Link>
-      </div>
 
-      <div >
-        <input type="search" placeholder="Buscar por título, autor..." />
-        <button type="button" >Filtros</button>
-      </div>
+        {/* Buscador */}
+        <div>
+          <input type="search" placeholder="Buscar por título, autor..." />
+          <button type="button" aria-label="Buscar">
+            Buscar
+          </button>
+        </div>
 
-      <div >
+      <nav>
         <div className="relative">          
           <button onClick={() => setOpenCart(!openCart)} className="relative rounded-full p-2 hover:bg-gray-100 transition">
             <TiShoppingCart size={28} />
@@ -43,10 +46,17 @@ export default function Header() {
           {openCart && (
             <CartPreview setOpenCart={setOpenCart} />
           )}
-        </div>
-        <Link to="/profile" aria-label="Perfil de usuario">
-          <span>👤</span>
-        </Link>
+        </div>                  
+          <Link to="/wishlist" aria-label="Favoritos">
+            Favoritos
+          </Link>
+          <button type="button" aria-label="Notificaciones">
+            Notificaciones
+          </button>
+          <Link to="/profile" aria-label="Perfil de usuario">
+            Perfil
+          </Link>
+        </nav>
       </div>
     </header>
   );
