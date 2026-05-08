@@ -20,7 +20,7 @@ export default function HomePage() {
           {books.length === 0 ? (
             <EmptyState onClearFilters={handleClearFilters} />
           ) : (
-            <BookGrid books={books} onAddToCart={handleAddToCart} />
+            <BookGrid books={books} />
           )}
         </div>
       </div>

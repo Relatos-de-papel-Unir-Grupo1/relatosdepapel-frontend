@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { TiShoppingCart } from "react-icons/ti";
+import { IoPersonCircle } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import CartPreview from "../CartPreview/CartPreview";
 import { GlobalContext } from "../../context/GlobalContext";
-import { Link } from "react-router-dom";
 import { useBooks } from "../../hooks/useBooks";
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
   const [openCart, setOpenCart] = useState(false);
 
   return (
-    <header className="header-container">
+    <header className="header-container ">
       <div className="header-logo">
         <Link to="/">Relatos de Papel</Link>
       </div>
@@ -47,7 +47,7 @@ export default function Header() {
             )}
                        
             <Link to="/profile" className="header-action-link" aria-label="Perfil de usuario">
-              <span className="icon">👤</span>
+              <span className="icon"><IoPersonCircle size={28} /></span>
             </Link>
           </div>
         </nav>
