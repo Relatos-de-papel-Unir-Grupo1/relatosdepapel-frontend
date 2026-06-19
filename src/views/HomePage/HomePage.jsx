@@ -2,9 +2,12 @@ import FiltersSidebar from "../../components/CatalogComponents/FiltersSidebar";
 import BookGrid from "../../components/CatalogComponents/BookGrid";
 import EmptyState from "../../components/CatalogComponents/EmptyState";
 import { useBooks } from "../../hooks/useBooks";
+import SupportChat from "../../components/SupportChat/SupportChat";
+
 
 export default function HomePage() {
-  const { books, filters, setFilters, DEFAULT_FILTERS } = useBooks();
+  const { books ,filters, setFilters, DEFAULT_FILTERS } = useBooks();
+  
 
   const handleClearFilters = () => setFilters(DEFAULT_FILTERS);  
 
@@ -33,8 +36,12 @@ export default function HomePage() {
           ) : (
             <BookGrid books={books} />
           )}
+
+          
         </div>
       </div>
+      {/* Chat de soporte */}
+            <SupportChat />
     </div>
   );
 }

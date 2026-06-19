@@ -4,8 +4,7 @@ export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
-    const [wishlistItems, setWishlistItems] = useState([]);
-    const [user, setUser] = useState(null);
+    const [wishlistItems, setWishlistItems] = useState([]);    
     const [discount, setDiscount] = useState(0);
 
     const addToCart = (item) => {
@@ -34,7 +33,7 @@ export function GlobalProvider({ children }) {
     };
 
     return (
-        <GlobalContext.Provider value={{ cartItems, addToCart, wishlistItems, addToWishlist, user, setUser, increaseCartItemQuantity, decreaseCartItemQuantity, removeFromCart, setDiscount, discount }}>
+        <GlobalContext.Provider value={{ cartItems, addToCart, wishlistItems, addToWishlist, increaseCartItemQuantity, decreaseCartItemQuantity, removeFromCart, setDiscount, discount }}>
             {children}
         </GlobalContext.Provider>
     );

@@ -1,5 +1,5 @@
 import { createContext, useState, useMemo } from "react";
-import { books } from "../data/mocks";
+import { useProducts } from "../hooks/useProducts";
 
 export const BookContext = createContext();
 
@@ -13,11 +13,11 @@ const DEFAULT_FILTERS = {
 function filterByPrice(book, price) {
   switch (price) {
     case "lt10":
-      return book.price < 10;
+      return book.unitPrice < 10;
     case "10to20":
-      return book.price >= 10 && book.price <= 20;
+      return book.unitPrice >= 10 && book.unitPrice <= 20;
     case "gt20":
-      return book.price > 20;
+      return book.unitPrice > 20;
     case "all":
     default:
       return true;
@@ -42,6 +42,7 @@ function sortByPopularity(list, popularity) {
 export function BookProvider({ children }) {
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [searchTerm, setSearchTerm] = useState("");
+  const { products:books } = useProducts();
 
   const visibleBooks = useMemo(() => {
     let result = books.filter((b) => filterByPrice(b, filters.price));
@@ -59,7 +60,7 @@ export function BookProvider({ children }) {
     }
 
     return sortByPopularity(result, filters.popularity);
-  }, [filters, searchTerm]);
+  }, [books, filters, searchTerm]);
 
   const value = {
     books: visibleBooks,

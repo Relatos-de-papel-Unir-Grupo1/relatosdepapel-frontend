@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { GlobalContext } from "../../context/GlobalContext";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function ProtectedRoute({ children }) {
-    const { user } = useContext(GlobalContext);
+    const { user } = useContext(AuthContext);
     const location = useLocation();
 
     if (!user) {

@@ -14,7 +14,7 @@ export default function ProductInfo({ book, onAddToCart, onBuyNow }) {
       <div className="flex flex-wrap items-end gap-4 rounded-[26px] border border-[rgba(22,49,58,0.08)] bg-white/72 p-5">
         <div>
           <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-[var(--color-primary-deep)]">Precio</p>
-          <span className="mt-2 block font-serif text-4xl font-semibold">${book.price.toFixed(2)}</span>
+          <span className="mt-2 block font-serif text-4xl font-semibold">${book.unitPrice.toFixed(2)}</span>
         </div>
         <span className="rounded-full bg-[var(--color-primary-soft)] px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-primary-deep)]">
           Stock disponible
