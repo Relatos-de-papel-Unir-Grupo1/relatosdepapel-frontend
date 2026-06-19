@@ -1,26 +1,37 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { GlobalContext } from "../../context/GlobalContext";
+import { useLogin } from "../../hooks/useLogin";
 
 function Login() {
-    const { setUser } = useContext(GlobalContext);
+    
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const { login } = useLogin();
+
     const from = location.state?.from?.pathname || "/";
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email || !password) {
             setError("Por favor ingresa correo y contraseña.");
             return;
         }
-        setError("");
-        setUser({ email });
-        navigate(from, { replace: true });
+
+        const result = await login(email, password);
+
+        if (result.success) {
+            setError("");
+            navigate(from, { replace: true });
+        }
+        else
+        {
+            alert("error");
+        }
+        
     };
 
     return (
@@ -88,9 +99,9 @@ function Login() {
                                 <p className="mt-2 text-xs text-red-600">{error}</p>
                             )}
                             <div className="mt-2 text-right">
-                <span className="cursor-pointer text-xs text-[var(--color-ink-muted)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline">
-                  ¿Olvidaste tu contraseña?
-                </span>
+                                <span className="cursor-pointer text-xs text-[var(--color-ink-muted)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline">
+                                    ¿Olvidaste tu contraseña?
+                                </span>
                             </div>
                         </div>
 
@@ -113,8 +124,8 @@ function Login() {
                     <div className="relative my-8 text-center">
                         <hr className="border-[rgba(22,49,58,0.1)]" />
                         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--color-paper)] px-2 text-xs uppercase text-[var(--color-ink-muted)]">
-              o continuar con
-            </span>
+                            o continuar con
+                        </span>
                     </div>
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

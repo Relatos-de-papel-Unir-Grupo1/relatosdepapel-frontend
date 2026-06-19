@@ -6,6 +6,7 @@ import ProductDetailsPage from './views/ProductDetailsPage/ProductDetailsPage';
 import HomePage from './views/HomePage/HomePage';
 import { GlobalProvider } from './context/GlobalContext';
 import { BookProvider } from "./context/BookContext";
+import { AuthProvider } from './context/AuthContext';
 import Cart from './views/Cart/Cart';
 import Login from './views/Login/login'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
@@ -13,25 +14,27 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
-    <GlobalProvider>
-    <BookProvider>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="home" element={<HomePage />} />
-        <Route path="product/:id" element={<ProductDetailsPage />} />
-        <Route path="login" element={<Login />} />
+    <AuthProvider>
+      <GlobalProvider>
+        <BookProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="product/:id" element={<ProductDetailsPage />} />
+              <Route path="login" element={<Login />} />
 
-        {/* Rutas protegidas: requieren usuario autenticado */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="checkout" element={<CheckoutPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-        </Route>
-      </Route>
-    </Routes>  
-    </BookProvider>
-    </GlobalProvider>
+              {/* Rutas protegidas: requieren usuario autenticado */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="checkout" element={<CheckoutPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </BookProvider>
+      </GlobalProvider>
+    </AuthProvider>
   )
 
 }

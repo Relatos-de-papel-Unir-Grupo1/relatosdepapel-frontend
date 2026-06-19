@@ -1,21 +1,21 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { books } from "../../data/mocks";
+
 import ProductGallery from "../../components/ProductDetails/ProductGallery";
 import ProductInfo from "../../components/ProductDetails/ProductInfo";
 import ProductVariants from "../../components/ProductDetails/ProductVariants";
 import ProductReviews from "../../components/ProductDetails/ProductReviews";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useContext } from "react";
+import { useProduct } from "../../hooks/useProduct"; 
 
 export default function ProductDetailsPage({ book }) {
   const { id } = useParams();
   const { addToCart } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const { product} = useProduct(id);
+  
   // Prioridad: prop > param de la URL > primer libro del mock
-  const currentBook =
-    book ||
-    books.find((b) => String(b.id) === String(id)) ||
-    books[0];
+  const currentBook = book || product;
 
   if (!currentBook) {
     return (
@@ -28,9 +28,9 @@ export default function ProductDetailsPage({ book }) {
     );
   }
 
-  const handleAddToCart = (b) => addToCart({ id: b.id, title: b.title, price: b.price, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
+  const handleAddToCart = (b) => addToCart({ id: b.id, title: b.title, price: b.unitPrice, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
   const handleBuyNow = (b) => {
-    addToCart({ id: b.id, title: b.title, price: b.price, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
+    addToCart({ id: b.id, title: b.title, price: b.unitPrice, image: b.coverImage, subtitle: b.subtitle, author: b.author, quantity: 1 });
     navigate("/cart");
   };
   const handleAddToWishlist = () =>
